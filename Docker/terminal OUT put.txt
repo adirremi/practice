@@ -1,0 +1,58 @@
+(base) adirremi@Adirs-MacBook-Pro DockerFlask % cat Dockerfile
+FROM python:alpine3.14
+COPY . /app
+WORKDIR /app
+RUN pip install flask
+CMD ["python", "getUser.py"]
+(base) adirremi@Adirs-MacBook-Pro DockerFlask % cat getUser.py 
+import getpass
+from flask import Flask, request
+
+
+
+app = Flask(__name__)
+app.config["DEBUG"] = True
+
+@app.route('/home', methods=['GET'])
+def home():
+
+    username = getpass.getuser()
+    print(username)
+    return "<h1>User Computer Name</h1><p>{username}.</p>".format(username=username)
+
+
+
+app.run(host="0.0.0.0", port=5001, debug=True)
+
+
+
+print("adi")
+
+
+
+
+(base) adirremi@Adirs-MacBook-Pro DockerFlask % docker build -t flask-get-user .
+[+] Building 1.2s (9/9) FINISHED                                                                                                                                                                            
+ => [internal] load build definition from Dockerfile                                                                                                                                                   0.0s
+ => => transferring dockerfile: 126B                                                                                                                                                                   0.0s
+ => [internal] load .dockerignore                                                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                                                        0.0s
+ => [internal] load metadata for docker.io/library/python:alpine3.14                                                                                                                                   1.0s
+ => [internal] load build context                                                                                                                                                                      0.0s
+ => => transferring context: 930B                                                                                                                                                                      0.0s
+ => [1/4] FROM docker.io/library/python:alpine3.14@sha256:78604a29496b7a1bd5ea5c985d69a0928db7ea32fcfbf71bbde3e317fdd9ac5e                                                                             0.0s
+ => CACHED [2/4] COPY . /app                                                                                                                                                                           0.0s
+ => CACHED [3/4] WORKDIR /app                                                                                                                                                                          0.0s
+ => CACHED [4/4] RUN pip install flask                                                                                                                                                                 0.0s
+ => exporting to image                                                                                                                                                                                 0.0s
+ => => exporting layers                                                                                                                                                                                0.0s
+ => => writing image sha256:837ee9d60c9558429eac007c9ff56b70218f98bb61f4bea5f16e9d70c0d3eb1c                                                                                                           0.0s
+ => => naming to docker.io/library/flask-get-user                                                                                                                                                      0.0s
+(base) adirremi@Adirs-MacBook-Pro DockerFlask % docker run -d -p 5001:5001 flask-get-user
+05018e8b6b30834b809b252d161f703c85c47886fdd9778087f0b9f15d1189f6
+
+
+
+
+my dockerhub repo link :
+https://hub.docker.com/repository/docker/adirremi/flask-get-user

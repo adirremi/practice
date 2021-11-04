@@ -1,0 +1,247 @@
+#1
+#!/bin/bash
+cd '/Users/adirremi/Desktop/'
+echo AdirRemi>mytxtfile.txt
+
+Started by user adirremi
+Running as SYSTEM
+Building on master in workspace /Users/adirremi/.jenkins/workspace/adirtext
+[adirtext] $ /bin/bash /var/folders/bn/x3d99cqx5dnbbvlgq_ltynk40000gn/T/jenkins1599285948425162012.sh
+Finished: SUCCESS
+
+2#
+#!/bin/bash
+cd '/Users/adirremi/Desktop/'
+cat '/Users/adirremi/Desktop/mytxtfile.txt'
+
+
+
+
+Started by user adirremi
+Running as SYSTEM
+Building remotely on slave01 (slaves) in workspace /tmp/workspace/adirreadprint
+[adirreadprint] $ /bin/bash /var/folders/bn/x3d99cqx5dnbbvlgq_ltynk40000gn/T/jenkins3660370003231519994.sh
+AdirRemi
+Finished: SUCCESS
+
+#3
+#!/bin/bash
+cd '/Users/adirremi/Desktop/'
+df -h
+
+Started by user adirremi
+Running as SYSTEM
+Building remotely on slave01 (slaves) in workspace /tmp/workspace/free-space
+[free-space] $ /bin/bash /var/folders/bn/x3d99cqx5dnbbvlgq_ltynk40000gn/T/jenkins5487272576896174325.sh
+Filesystem       Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk3s1s1  460Gi   21Gi  337Gi     6%  559993 4827416527    0%   /
+devfs           215Ki  215Ki    0Bi   100%     742          0  100%   /dev
+/dev/disk3s6    460Gi  4.0Gi  337Gi     2%       4 4827976516    0%   /System/Volumes/VM
+/dev/disk3s2    460Gi  400Mi  337Gi     1%    1176 4827975344    0%   /System/Volumes/Preboot
+/dev/disk3s4    460Gi  562Mi  337Gi     1%     216 4827976304    0%   /System/Volumes/Update
+/dev/disk1s2    500Mi  6.0Mi  481Mi     2%       3    5119997    0%   /System/Volumes/xarts
+/dev/disk1s1    500Mi  7.4Mi  481Mi     2%      24    5119976    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3    500Mi  668Ki  481Mi     1%      38    5119962    0%   /System/Volumes/Hardware
+/dev/disk3s5    460Gi   96Gi  337Gi    23%  947551 4827028969    0%   /System/Volumes/Data
+map auto_home     0Bi    0Bi    0Bi   100%       0          0  100%   /System/Volumes/Data/home
+/dev/disk2s1    5.0Gi  1.8Gi  3.1Gi    38%      62   52428298    0%   /System/Volumes/Update/SFR/mnt1
+/dev/disk4s2    439Mi  439Mi    0Bi   100%     369 4294966910    0%   /Volumes/Google Chrome
+/dev/disk3s1    460Gi   21Gi  337Gi     6%  553783 4827422737    0%   /System/Volumes/Update/mnt1
+/dev/disk5s1    145Mi  143Mi  2.0Mi    99%    1827 4294965452    0%   /Volumes/VLC media player
+/dev/disk6s3    376Mi  369Mi  7.3Mi    99%     154 4294967125    0%   /Volumes/Firefox
+Finished: SUCCESS
+
+
+#4
+#!/bin/bash
+
+mv -f /Users/adirremi/Desktop/mytxtfile.txt /Users/adirremi/Desktop/adir/
+
+
+Started by user adirremi
+Running as SYSTEM
+Building on master in workspace /Users/adirremi/.jenkins/workspace/move-file
+[move-file] $ /bin/bash /var/folders/bn/x3d99cqx5dnbbvlgq_ltynk40000gn/T/jenkins7502123359732175995.sh
+Finished: SUCCESS
+
+
+#5
+Schedule
+0  8  *  *  *
+
+#6
+Started by user adirremi
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/adirremi/.jenkins/workspace/piplinejobs1-4
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Job1 -create and write txt)
+[Pipeline] sh
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (job2 -readandprint)
+[Pipeline] sh
++ cat /Users/adirremi/Desktop/mytxtfile.txt
+AdirRemi
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (job3-print free disk)
+[Pipeline] sh
++ df -h
+Filesystem       Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk3s1s1  460Gi   21Gi  341Gi     6%  559993 4827416527    0%   /
+devfs           215Ki  215Ki    0Bi   100%     742          0  100%   /dev
+/dev/disk3s6    460Gi  4.0Gi  341Gi     2%       4 4827976516    0%   /System/Volumes/VM
+/dev/disk3s2    460Gi  400Mi  341Gi     1%    1176 4827975344    0%   /System/Volumes/Preboot
+/dev/disk3s4    460Gi  562Mi  341Gi     1%     216 4827976304    0%   /System/Volumes/Update
+/dev/disk1s2    500Mi  6.0Mi  481Mi     2%       3    5119997    0%   /System/Volumes/xarts
+/dev/disk1s1    500Mi  7.4Mi  481Mi     2%      24    5119976    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3    500Mi  668Ki  481Mi     1%      38    5119962    0%   /System/Volumes/Hardware
+/dev/disk3s5    460Gi   91Gi  341Gi    22%  892025 4827084495    0%   /System/Volumes/Data
+map auto_home     0Bi    0Bi    0Bi   100%       0          0  100%   /System/Volumes/Data/home
+/dev/disk2s1    5.0Gi  1.8Gi  3.1Gi    38%      62   52428298    0%   /System/Volumes/Update/SFR/mnt1
+/dev/disk4s2    439Mi  439Mi    0Bi   100%     369 4294966910    0%   /Volumes/Google Chrome
+/dev/disk3s1    460Gi   21Gi  341Gi     6%  553783 4827422737    0%   /System/Volumes/Update/mnt1
+/dev/disk5s1    145Mi  143Mi  2.0Mi    99%    1827 4294965452    0%   /Volumes/VLC media player
+/dev/disk6s3    376Mi  369Mi  7.3Mi    99%     154 4294967125    0%   /Volumes/Firefox
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (job4 - move my txt file)
+[Pipeline] sh
++ mv -f /Users/adirremi/Desktop/mytxtfile.txt /Users/adirremi/Desktop/adir/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Job1 -create and write txt') {
+            steps {
+               sh '''#!/bin/bash
+cd \'/Users/adirremi/Desktop/\'
+echo AdirRemi>mytxtfile.txt'''
+
+
+
+            }
+        }
+        stage("job2 -readandprint"){
+            steps{
+                sh 'cat \'/Users/adirremi/Desktop/mytxtfile.txt\''
+            }
+        }
+        stage("job3-print free disk"){
+            steps{
+                sh 'df -h'
+            }
+        }
+        stage("job4 - move my txt file"){
+            steps{
+                sh 'mv -f /Users/adirremi/Desktop/mytxtfile.txt /Users/adirremi/Desktop/adir/  '
+            }
+
+
+        }
+    }
+}
+
+
+#7
+
+Started by user adirremi
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on slave01 in /tmp/workspace/run-selenuim
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (test)
+[Pipeline] dir
+Running in /Users/adirremi/PycharmProjects/homework
+[Pipeline] {
+[Pipeline] sh
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+
+
+pipeline {
+agent any
+    stages {
+        stage('test') {
+            steps {
+                dir('/Users/adirremi/PycharmProjects/homework/') {
+                 sh '''#!/bin/bash
+python test.py'''
+                }
+            }
+        }
+    }
+}
+
+#8
+Started by user adirremi
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on slave01 in /tmp/workspace/run-next-auto
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Job1 -create and write txt)
+[Pipeline] sh
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (run job auto)
+[Pipeline] build (Building adirreadprint)
+Scheduling project: adirreadprint
+Starting building: adirreadprint #4
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Job1 -create and write txt') {
+            steps {
+               sh '''#!/bin/bash
+cd \'/Users/adirremi/Desktop/\'
+echo AdirRemi>mytxtfile.txt'''
+
+
+
+            }
+        }
+        stage("run job auto"){
+            steps{
+                build ('adirreadprint')
+            }
+        }
+    }
+}

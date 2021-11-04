@@ -1,0 +1,46 @@
+#1+2
+(base) adirremi@Adirs-MacBook-Pro githw % ls -l
+total 0
+drwxr-xr-x  36 adirremi  staff  1152 Sep 29 22:45 appium
+drwxr-xr-x   5 adirremi  staff   160 Sep 29 22:04 my-first-repo
+drwxr-xr-x   5 adirremi  staff   160 Sep 29 23:25 pythonblabla
+drwxr-xr-x  44 adirremi  staff  1408 Sep 29 23:22 selenium
+
+#3
+git clone https://github.com/adirremi/pythonblabla.git
+
+#4
+(base) adirremi@Adirs-MacBook-Pro my-bra % git branch
+* master
+  test
+
+#5
+(base) adirremi@Adirs-MacBook-Pro mergecon % git merge master
+Auto-merging 2.txt
+CONFLICT (content): Merge conflict in 2.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+6#
+(base) adirremi@Adirs-MacBook-Pro revert % git checkout 84bb6bb3198b99af6f99ab41ba9c89c97bae5fc9
+Note: switching to '84bb6bb3198b99af6f99ab41ba9c89c97bae5fc9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 84bb6bb 3 commit
+
+#7
+(base) adirremi@Adirs-MacBook-Pro revert % git reset 84bb6bb3198b99af6f99ab41ba9c89c97bae5fc9 --hard
+HEAD is now at 84bb6bb 3 commit

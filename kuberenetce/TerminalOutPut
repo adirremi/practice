@@ -1,0 +1,82 @@
+
+(base) adirremi@Adirs-MacBook-Pro ~ % cd PycharmProjects
+(base) adirremi@Adirs-MacBook-Pro PycharmProjects % cd homework
+(base) adirremi@Adirs-MacBook-Pro homework % cd HomeWork10
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % cat superset-code.txt
+apiVersion: v1
+kind: Pod
+metadata:
+  name: superset
+spec:
+  containers:
+  - name: superset
+    image: amancevice/superset
+    ports:
+    - containerPort: 80
+
+
+——
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: superset
+  labels:
+    run: superset
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: superset
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl get pod
+NAME                                READY   STATUS             RESTARTS   AGE
+frontend-6c6d6dfd4d-rnxg2           1/1     Running            5          45d
+frontend-6c6d6dfd4d-vz6xj           1/1     Running            5          45d
+frontend-6c6d6dfd4d-xmwkd           1/1     Running            5          45d
+my-app-mychart-589fc6f79-nbbws      0/1     ImagePullBackOff   0          24d
+my-mariadb-0                        1/1     Running            4          24d
+my-release-mysql-0                  1/2     CrashLoopBackOff   277        10d
+nginx-deployment-746ccc65d8-648kc   1/1     Running            3          10d
+nginx-deployment-746ccc65d8-rrws8   1/1     Running            3          10d
+nginx-deployment-746ccc65d8-tm5sp   1/1     Running            3          10d
+pod-env-var                         1/1     Running            4          24d
+superset                            0/1     ImagePullBackOff   0          26m
+task-pv-pod                         1/1     Running            4          25d
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl delete pod superset
+pod "superset" deleted
+^C
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl delete pod superset
+Error from server (NotFound): pods "superset" not found
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 %
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl get pod
+NAME                                READY   STATUS             RESTARTS   AGE
+frontend-6c6d6dfd4d-rnxg2           1/1     Running            5          45d
+frontend-6c6d6dfd4d-vz6xj           1/1     Running            5          45d
+frontend-6c6d6dfd4d-xmwkd           1/1     Running            5          45d
+my-app-mychart-589fc6f79-nbbws      0/1     ImagePullBackOff   0          24d
+my-mariadb-0                        1/1     Running            4          24d
+my-release-mysql-0                  1/2     CrashLoopBackOff   277        10d
+nginx-deployment-746ccc65d8-648kc   1/1     Running            3          10d
+nginx-deployment-746ccc65d8-rrws8   1/1     Running            3          10d
+nginx-deployment-746ccc65d8-tm5sp   1/1     Running            3          10d
+pod-env-var                         1/1     Running            4          24d
+task-pv-pod                         1/1     Running            4          25d
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl run superset --image=amancevice/supersetet
+pod/superset created
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl expose pod superset --type=NodePort --port=8080
+service/superset exposed
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl delete service superset
+service "superset" deleted
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl delete pod superset
+pod "superset" deleted
+^Z
+zsh: suspended  kubectl delete pod superset
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 % kubectl apply -f superset.yml
+pod/superset created
+service/superset created
+(base) adirremi@Adirs-MacBook-Pro HomeWork10 %
+(base) adirremi@Adirs-MacBook-Pro ~ % kubectl run airflow  --image=puckel/docker-airflow
+pod/airflow created
+(base) adirremi@Adirs-MacBook-Pro ~ % kubectl expose pod airflow --type=NodePort --port=8080
+service/airflow exposed

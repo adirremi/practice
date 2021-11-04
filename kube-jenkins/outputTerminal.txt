@@ -1,0 +1,59 @@
+
+Error: INSTALLATION FAILED: cannot re-use a name that is still in use
+(base) adirremi@Adirs-MacBook-Pro ~ % helm install my-release-jen stable/jenkins
+WARNING: This chart is deprecated
+NAME: my-release-jen
+LAST DEPLOYED: Sat Oct 30 19:26:31 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+*******************
+****DEPRECATED*****
+*******************
+* The Jenkins chart is deprecated. Future development has been moved to https://github.com/jenkinsci/helm-charts
+
+1. Get your 'admin' user password by running:
+  printf $(kubectl get secret --namespace default my-release-jen-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/component=jenkins-master" -l "app.kubernetes.io/instance=my-release-jen" -o jsonpath="{.items[0].metadata.name}")
+  echo http://127.0.0.1:8080
+  kubectl --namespace default port-forward $POD_NAME 8080:8080
+
+3. Login with the password from step 1 and the username: admin
+
+4. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http:///configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
+
+For more information on running Jenkins on Kubernetes, visit:
+https://cloud.google.com/solutions/jenkins-on-container-engine
+For more information about Jenkins Configuration as Code, visit:
+https://jenkins.io/projects/jcasc/
+(base) adirremi@Adirs-MacBook-Pro ~ % printf $(kubectl get secret --namespace default my-release-jen-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+O5JFHxzKIn
+(base) adirremi@Adirs-MacBook-Pro ~ % kubectl get pod                                                                                                                    
+NAME                                      READY   STATUS             RESTARTS   AGE
+airflow                                   1/1     Running            19         7h32m
+frontend-6c6d6dfd4d-rnxg2                 1/1     Running            8          46d
+frontend-6c6d6dfd4d-vz6xj                 1/1     Running            8          46d
+frontend-6c6d6dfd4d-xmwkd                 1/1     Running            8          46d
+my-mariadb-0                              1/1     Running            0          4m7s
+my-release-jen-jenkins-555cffd689-9d6vl   0/2     Init:0/1           0          27s
+my-release-mysql-0                        1/2     CrashLoopBackOff   414        11d
+superset                                  1/1     Running            3          23h
+(base) adirremi@Adirs-MacBook-Pro ~ % kubectl port-forward my-release-jen-jenkins-555cffd689-9d6vl 8080:8080                          
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080

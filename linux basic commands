@@ -1,0 +1,45 @@
+#1
+(base) adirremi@Adirs-MacBook-Pro ~ % mkdir linuxHW
+(base) adirremi@Adirs-MacBook-Pro ~ % cd linuxHW
+(base) adirremi@Adirs-MacBook-Pro linuxHW % echo adirremi>txtfile.txt
+(base) adirremi@Adirs-MacBook-Pro linuxHW % cat txtfile.txt
+adirremi
+(base) adirremi@Adirs-MacBook-Pro linuxHW % cp /Users/adirremi/linuxHW/txtfile.txt /Users/adirremi/Music/
+(base) adirremi@Adirs-MacBook-Pro linuxHW % cd /Users/adirremi/Music
+(base) adirremi@Adirs-MacBook-Pro Music % echo remi>txtfilr.txt
+(base) adirremi@Adirs-MacBook-Pro Music % cat txtfile.txt
+remi
+
+#2
+sudo apt install VLC
+
+#3
+(base) adirremi@Adirs-MacBook-Pro Music % ssh adirremi@tty.sdf.org aBgqRE6wsWnLGw
+adirremi@tty.sdf.org's password:
+stty: TIOCGLINED: Inappropriate ioctl for device
+[ 'adirremi' will expire in 666 days - Please 'validate' your account soon ]
+
+Please press your BACKSPACE key: stty: TIOCGLINED: Inappropriate ioctl for device
+
+stty: TIOCGLINED: Inappropriate ioctl for device
+
+
+=======================================================================
+SDF host uptime report for Seattle WA, Dallas TX (USA) and Germany (EU)
+             Please use 'tty.sdf.org' for general access
+=======================================================================
+
+SERVER          DAYS+HOUR:MIN       USERS   MACHINE LOAD
+----------------------------------------------------------------------
+mx                up   31+23:00,   0 users, load 2.67, 2.41, 1.71
+sdf               up   31+23:08,   2 users, load 0.42, 0.72, 0.57
+rie               up  227+18:36,   0 users, load 0.10, 0.20, 0.14
+miku              up   34+14:41,   0 users, load 0.09, 0.16, 0.22
+vps3              up  182+17:06,   0 users, load 0.57, 1.38, 1.71
+otaku             up   31+23:05,   1  user, load 0.57, 0.55, 0.40
+norge             up    5+11:13,   0 users, load 0.08, 0.09, 0.16
+faeroes           up  227+18:36,   1  user, load 0.32, 0.47, 0.32
+sverige           up    5+11:16,   0 users, load 0.17, 0.14, 0.09
+iceland           up   31+23:07,   0 users, load 0.52, 0.41, 0.34
+anonradio         up   67+19:54,   0 users, load 0.29, 0.20, 0.18
+(continue)
